@@ -1,0 +1,20 @@
+session_name: test
+windows:
+  - layout: tiled
+    panes:
+      - shell_command:
+        - roslaunch streaming streaming.launch
+      - shell_command:
+        - sleep 0.5
+        - rosrun unitree_legged_real twist_sub
+      # - shell_command:
+      #   - cd bagfiles/
+      #   - sleep 3
+        # - rosbag record /high_state /cmd_vel /vrpn_client_node/aliengo/pose /vrpn_client_node/aliengo/twist
+      - shell_command:
+        - sleep 0.5
+        - rosrun teleop_twist_keyboard teleop_twist_keyboard.py
+    shell_command_before:
+      - cd ~/test/
+      - source devel/setup.bash 
+    window_name: test
